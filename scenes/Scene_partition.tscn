@@ -1,6 +1,5 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdv5uc2gvsfcj"]
 
-[ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
 [ext_resource type="Script" path="res://scripts/scene_partition.gd" id="1_eyimo"]
 [ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
@@ -64,4 +63,4 @@ curve = SubResource("Curve2D_x7d5w")
 position = Vector2(1920, 720)
 rotation = -1.5708
 
-[connection signal="hit" from="Player" to="." method="game_over"]
+[node name="Player" parent="." instance=ExtResource("2_5wjvc")]
