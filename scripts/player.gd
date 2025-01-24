@@ -11,26 +11,25 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-@export var speed = 1000
+@export var positions_y := [425 - 50, 525 - 50, 625 - 50, 725 - 50] # Les positions entre les barres noires
+var current_index := 1  # Position initiale
+var target_y := 0  # Cible verticale
 var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	
+	target_y = positions_y[current_index]  # Position initiale
+	position.y = target_y
+
 func _process(delta):
-	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("escape"):
+	if Input.is_action_just_pressed("move_up") and current_index > 0:
+		current_index -= 1
+		target_y = positions_y[current_index]
+	elif Input.is_action_just_pressed("move_down") and current_index < positions_y.size() - 1:
+		current_index += 1
+		target_y = positions_y[current_index]
+
+	position.y = lerp(position.y, float(target_y), 20 * delta)
+
+	if Input.is_action_just_pressed("escape"):
 		get_tree().change_scene_to_file("res://scenes/menu/menuDebut.tscn")
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y +=1
-		
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed;
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
-		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
