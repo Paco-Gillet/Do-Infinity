@@ -19,9 +19,11 @@ func _ready():
 	
 func _process(delta):
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("haut"):
+	if Input.is_action_pressed("escape"):
+		get_tree().change_scene_to_file("res://scenes/menu/menuDebut.tscn")
+	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-	if Input.is_action_pressed("bas"):
+	if Input.is_action_pressed("move_down"):
 		velocity.y +=1
 		
 	if velocity.length() > 0:

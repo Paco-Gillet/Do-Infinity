@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://ebmeun8cj0uj"]
+
+[ext_resource type="Script" path="res://scenes/menu/menuOption.gd" id="1_3dv82"]
+[ext_resource type="PackedScene" uid="uid://bboet6vnjs84r" path="res://scenes/options/hotkey_rebind_button.tscn" id="3_756cf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_by4de"]
+
+[node name="menuOption" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3dv82")
+
+[node name="Quit" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -230.0
+offset_right = 100.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Close"
+icon_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -340.0
+offset_right = 500.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Binds" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Binds"]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 566.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Binds/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Binds/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 96
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Binds/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
+
+[node name="hotkey_rebind_button" parent="TabContainer/Binds/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_756cf")]
+layout_mode = 2
+
+[node name="hotkey_rebind_button2" parent="TabContainer/Binds/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_756cf")]
+layout_mode = 2
+action_name = "move_down"
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Binds/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
