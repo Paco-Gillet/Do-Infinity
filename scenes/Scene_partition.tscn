@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdv5uc2gvsfcj"]
+
+[ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
+[ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
+
+[node name="ScenePartition" type="Node2D"]
+
+[node name="BelleCleDeSol" type="Sprite2D" parent="."]
+position = Vector2(200, 540)
+texture = ExtResource("1_brfxy")
+
+[node name="Player" parent="." instance=ExtResource("2_5wjvc")]
+position = Vector2(551, 467)

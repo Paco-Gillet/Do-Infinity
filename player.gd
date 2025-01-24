@@ -1,11 +1,14 @@
 extends CollisionShape2D
 
+signal hit
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _on_body_entered(_body):
+	hide()
+	hit.emit()
+	#desactive la hitbox du player
+	$CollisionShape2D.set_deferred("disabled", true)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
