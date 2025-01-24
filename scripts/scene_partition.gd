@@ -31,7 +31,8 @@ func _on_note_timer_timeout() -> void:
 	
 	lastTimeToSpawn += get_process_delta_time()
 	
-	if(lastTimeToSpawn >=0.1): 
+
+	if(lastTimeToSpawn >=0.05): 
 		lastTimeToSpawn = 0
 		var melodie = melodie_scene.instantiate()
 		var nbPointSpawn: int = randi_range(1,4) 
