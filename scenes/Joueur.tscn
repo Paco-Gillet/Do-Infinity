@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx43dhbahlokd"]
+
+[ext_resource type="Texture2D" uid="uid://dbs7acjosupso" path="res://sprites/BoulDeSon.png" id="1_dfxaj"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ys1rn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xovnx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dfxaj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4klt"]
+radius = 59.0339
+
+[node name="Player" type="Area2D"]
+position = Vector2(454, 422)
+script = ExtResource("1_ys1rn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-25, -23)
+scale = Vector2(0.477, 0.5)
+sprite_frames = SubResource("SpriteFrames_xovnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-26, -22)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_e4klt")
+metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_player_body_entered"]
