@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdv5uc2gvsfcj"]
 
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
-[ext_resource type="PackedScene" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
+[ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
 
 [node name="ScenePartition" type="Node2D"]
 
