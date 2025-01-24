@@ -8,9 +8,10 @@ func _ready():
 
 func new_game():
 	score = 0
+	$Score.text = "Score: " + str(score/10)
+	$Score.show()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
-	
 
 func game_over() -> void:
 	$ScoreTimer.stop()
@@ -24,6 +25,8 @@ func _on_start_timer_timeout() -> void:
 
 func _on_score_timer_timeout() -> void:
 	score += 1
+	$Score.text = "Score: " + str(score**10)
+	$Score.show()
 
 
 func _on_note_timer_timeout() -> void:
