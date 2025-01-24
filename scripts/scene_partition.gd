@@ -41,10 +41,10 @@ func _on_note_timer_timeout() -> void:
 		var note_spawn_location = get_node(pathPointSpawn)
 
 		var direction = note_spawn_location.rotation + PI / 2
+		var velocity = Vector2(200.0, 0.0).rotated(direction)
 	
 		melodie.position = note_spawn_location.position
-	
-		var velocity = Vector2(200.0, 0.0)
-		melodie.linear_velocity = velocity.rotated(direction)
+
+		melodie.set_velocity(velocity)
 	
 		add_child(melodie)
