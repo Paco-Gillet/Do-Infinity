@@ -1,16 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdv5uc2gvsfcj"]
+[gd_scene load_steps=9 format=3 uid="uid://cdv5uc2gvsfcj"]
 
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
 [ext_resource type="Script" path="res://scripts/scene_partition.gd" id="1_eyimo"]
 [ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
+[ext_resource type="Texture2D" uid="uid://bay80m3kfwbjw" path="res://sprites/point.png" id="6_mkbxd"]
 
 [sub_resource type="Curve2D" id="Curve2D_x7d5w"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1920, 720, 0, 0, 0, 0, 1920, 320, 0, 0, 0, 0, 1920, 728, 0, 0, 0, 0, 1920, 720)
 }
 point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_aof4c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1920, 96, 0, 0, 0, 0, 0, 96)
+}
+point_count = 2
 
 [node name="ScenePartition" type="Node2D"]
 script = ExtResource("1_eyimo")
@@ -80,3 +87,10 @@ scale = Vector2(0.00981571, 0.366356)
 texture = ExtResource("1_c4hj6")
 
 [node name="Player" parent="." instance=ExtResource("2_5wjvc")]
+
+[node name="NuagePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_aof4c")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1008, 616)
+texture = ExtResource("6_mkbxd")
