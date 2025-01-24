@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://lge5pq08lyv"]
+
+[ext_resource type="Script" path="res://scripts/melodie.gd" id="1_k8a76"]
+[ext_resource type="Texture2D" uid="uid://dq30t7gmqcvuw" path="res://sprites/asset-melodie-49-V3.png" id="2_yestc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8r1ld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yestc")
+}],
+"loop": true,
+"name": &"melodie",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_thh77"]
+radius = 99.82
+
+[node name="Melodie" type="RigidBody2D"]
+script = ExtResource("1_k8a76")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8r1ld")
+animation = &"melodie"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_thh77")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
