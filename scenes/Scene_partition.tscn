@@ -25,7 +25,7 @@ scale = Vector2(7.8, 0.03)
 texture = ExtResource("3_pn1sh")
 
 [node name="BarreNoireSi" type="Sprite2D" parent="."]
-position = Vector2(958, 528)
+position = Vector2(958, 525)
 scale = Vector2(7.8, 0.03)
 texture = ExtResource("3_pn1sh")
 
@@ -45,7 +45,7 @@ scale = Vector2(7.8, 0.03)
 texture = ExtResource("3_pn1sh")
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(500, 500)
+position = Vector2(450, 475)
 
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -80,3 +80,5 @@ scale = Vector2(0.00981571, 0.366356)
 texture = ExtResource("1_c4hj6")
 
 [node name="Player" parent="." instance=ExtResource("2_5wjvc")]
+position = Vector2(450, 475)
+scale = Vector2(1.2, 1.2)
