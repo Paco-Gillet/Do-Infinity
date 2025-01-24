@@ -19,16 +19,20 @@ animations = [{
 radius = 59.0339
 
 [node name="Player" type="Area2D"]
-position = Vector2(452, 429)
+position = Vector2(454, 422)
 script = ExtResource("1_ys1rn")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-25, -23)
+scale = Vector2(0.477, 0.5)
 sprite_frames = SubResource("SpriteFrames_xovnx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-26, -22)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_e4klt")
 script = ExtResource("2_nmxuq")
+metadata/_edit_group_ = true
 
 [connection signal="body_entered" from="." to="CollisionShape2D" method="_on_player_body_entered"]
