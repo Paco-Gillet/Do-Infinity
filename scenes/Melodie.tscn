@@ -15,12 +15,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_thh77"]
-radius = 99.82
+radius = 45.93
 
 [node name="Melodie" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_k8a76")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 0
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8r1ld")
 animation = &"melodie"
 

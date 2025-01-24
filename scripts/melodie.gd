@@ -3,7 +3,6 @@ extends RigidBody2D
 @onready var melodie: AnimatedSprite2D = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	melodie.play("melodie")
 
 
