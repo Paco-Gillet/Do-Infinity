@@ -30,6 +30,3 @@ func _process(delta):
 		target_y = positions_y[current_index]
 
 	position.y = lerp(position.y, float(target_y), 20 * delta)
-
-	if Input.is_action_just_pressed("escape"):
-		get_tree().change_scene_to_file("res://scenes/menu/menuDebut.tscn")
