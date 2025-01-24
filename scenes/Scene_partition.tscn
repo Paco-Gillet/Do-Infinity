@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
 [ext_resource type="Script" path="res://scripts/scene_partition.gd" id="1_eyimo"]
 [ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
-[ext_resource type="PackedScene" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
+[ext_resource type="PackedScene" uid="uid://lge5pq08lyv" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 
 [sub_resource type="Curve2D" id="Curve2D_x7d5w"]
