@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 
 [sub_resource type="Curve2D" id="Curve2D_x7d5w"]
+bake_interval = 131.55
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1920, 320, 0, 0, 0, 0, 1920, 728)
 }
@@ -63,9 +64,25 @@ wait_time = 0.5
 [node name="NotePath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_x7d5w")
 
-[node name="NoteSpawnLocation" type="PathFollow2D" parent="NotePath"]
-position = Vector2(1920, 320)
+[node name="PointSpawnLocation1" type="PathFollow2D" parent="NotePath"]
+position = Vector2(1920, 372.844)
 rotation = 1.5708
+progress = 53.6112
+
+[node name="PointSpawnLocation2" type="PathFollow2D" parent="NotePath"]
+position = Vector2(1920, 478.432)
+rotation = 1.5708
+progress = 159.12
+
+[node name="PointSpawnLocation3" type="PathFollow2D" parent="NotePath"]
+position = Vector2(1920, 577.172)
+rotation = 1.5708
+progress = 256.469
+
+[node name="PointSpawnLocation4" type="PathFollow2D" parent="NotePath"]
+position = Vector2(1920, 680.844)
+rotation = 1.5708
+progress = 359.366
 
 [node name="BelleCleDeSol" type="Sprite2D" parent="."]
 position = Vector2(197, 540)
