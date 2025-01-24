@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cx43dhbahlokd"]
 
 [ext_resource type="Texture2D" uid="uid://dbs7acjosupso" path="res://sprites/BoulDeSon.png" id="1_dfxaj"]
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_ys1rn"]
-[ext_resource type="Script" path="res://player.gd" id="2_nmxuq"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ys1rn"]
+[ext_resource type="Script" path="res://scripts/collisionPlayer.gd" id="2_nmxuq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xovnx"]
 animations = [{
