@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
 [ext_resource type="Script" path="res://scripts/scene_partition.gd" id="1_eyimo"]
-[ext_resource type="PackedScene" uid="uid://cl5kv8pwntr4c" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
+[ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 
 [node name="ScenePartition" type="Node2D"]
