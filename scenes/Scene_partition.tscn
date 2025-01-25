@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdv5uc2gvsfcj"]
+[gd_scene load_steps=8 format=3 uid="uid://cdv5uc2gvsfcj"]
 
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
 [ext_resource type="Script" path="res://scripts/scene_partition.gd" id="1_eyimo"]
 [ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
+[ext_resource type="PackedScene" uid="uid://bsuey3jfq2ma1" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 [ext_resource type="AudioStream" uid="uid://caydig6nfjtfj" path="res://sounds/QueSt.wav" id="6_p0cor"]
 [ext_resource type="AudioStream" uid="uid://dialonoxf775i" path="res://sounds/Tunnel.wav" id="9_8gxgh"]
@@ -11,10 +12,11 @@
 [ext_resource type="AudioStream" uid="uid://cp4dicx65mt85" path="res://sounds/speedcore.wav" id="11_3ba4r"]
 
 [sub_resource type="Curve2D" id="Curve2D_x7d5w"]
+bake_interval = 131.55
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1920, 720, 0, 0, 0, 0, 1920, 320, 0, 0, 0, 0, 1920, 728, 0, 0, 0, 0, 1920, 720)
+"points": PackedVector2Array(0, 0, 0, 0, 1920, 320, 0, 0, 0, 0, 1920, 728)
 }
-point_count = 4
+point_count = 2
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_32t1k"]
 loop = false
@@ -24,8 +26,10 @@ stream_1 = ExtResource("9_8gxgh")
 
 [node name="ScenePartition" type="Node2D"]
 script = ExtResource("1_eyimo")
+melodie_scene = ExtResource("2_nk0mr")
 
 [node name="Fond" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
 texture = ExtResource("1_c4hj6")
 centered = false
 
@@ -58,7 +62,6 @@ texture = ExtResource("3_pn1sh")
 position = Vector2(450, 475)
 
 [node name="ScoreTimer" type="Timer" parent="."]
-wait_time = 0.1
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -70,9 +73,25 @@ wait_time = 0.5
 [node name="NotePath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_x7d5w")
 
-[node name="NoteSpawnLocation" type="PathFollow2D" parent="NotePath"]
-position = Vector2(1920, 720)
-rotation = -1.5708
+[node name="PointSpawnLocation1" type="PathFollow2D" parent="NotePath"]
+position = Vector2(1920, 372.844)
+rotation = 1.5708
+progress = 53.6112
+
+[node name="PointSpawnLocation2" type="PathFollow2D" parent="NotePath"]
+position = Vector2(1920, 478.432)
+rotation = 1.5708
+progress = 159.12
+
+[node name="PointSpawnLocation3" type="PathFollow2D" parent="NotePath"]
+position = Vector2(1920, 577.172)
+rotation = 1.5708
+progress = 256.469
+
+[node name="PointSpawnLocation4" type="PathFollow2D" parent="NotePath"]
+position = Vector2(1920, 680.843)
+rotation = 1.5708
+progress = 359.366
 
 [node name="BelleCleDeSol" type="Sprite2D" parent="."]
 position = Vector2(197, 540)
@@ -98,3 +117,24 @@ stream = SubResource("AudioStreamPlaylist_32t1k")
 autoplay = true
 script = ExtResource("9_guhsr")
 speedcore = ExtResource("11_3ba4r")
+
+[node name="HighScore" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 90.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+
+[node name="Score" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 90.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]
+[connection signal="hit" from="Player" to="." method="game_over"]

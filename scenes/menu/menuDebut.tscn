@@ -16,20 +16,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dbs0r")
 
-[node name="Titre" type="Label" parent="."]
+[node name="VBoxText" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -503.0
-offset_right = 503.0
-offset_bottom = 273.0
+offset_left = -377.0
+offset_right = 377.0
+offset_bottom = 232.0
 grow_horizontal = 2
+
+[node name="Titre" type="Label" parent="VBoxText"]
+layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 150
 text = "Do Infinity"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HighScore" type="Label" parent="VBoxText"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="VBoxText"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
 
 [node name="VBoxButton" type="VBoxContainer" parent="."]
 layout_mode = 1
