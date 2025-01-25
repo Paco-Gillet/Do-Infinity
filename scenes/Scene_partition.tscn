@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdv5uc2gvsfcj"]
+[gd_scene load_steps=9 format=3 uid="uid://cdv5uc2gvsfcj"]
 
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
 [ext_resource type="Script" path="res://scripts/scene_partition.gd" id="1_eyimo"]
 [ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
-[ext_resource type="PackedScene" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
+[ext_resource type="PackedScene" uid="uid://lge5pq08lyv" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
+[ext_resource type="PackedScene" uid="uid://bieylfjphacgc" path="res://scenes/Note_musique.tscn" id="3_72e0i"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 
 [sub_resource type="Curve2D" id="Curve2D_x7d5w"]
@@ -17,6 +18,7 @@ point_count = 2
 [node name="ScenePartition" type="Node2D"]
 script = ExtResource("1_eyimo")
 melodie_scene = ExtResource("2_nk0mr")
+note_scene = ExtResource("3_72e0i")
 
 [node name="Fond" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
@@ -55,11 +57,10 @@ position = Vector2(450, 475)
 wait_time = 0.1
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.05
 one_shot = true
 
-[node name="NoteTimer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="MelodieTimer" type="Timer" parent="."]
 
 [node name="NotePath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_x7d5w")
@@ -80,7 +81,7 @@ rotation = 1.5708
 progress = 256.469
 
 [node name="PointSpawnLocation4" type="PathFollow2D" parent="NotePath"]
-position = Vector2(1920, 680.844)
+position = Vector2(1920, 680.843)
 rotation = 1.5708
 progress = 359.366
 
@@ -101,6 +102,8 @@ texture = ExtResource("1_c4hj6")
 
 [node name="Player" parent="." instance=ExtResource("2_5wjvc")]
 
+[node name="NoteTimer" type="Timer" parent="."]
+
 [node name="Score" type="Label" parent="."]
 offset_left = 50.0
 offset_top = 50.0
@@ -109,7 +112,12 @@ offset_bottom = 95.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 
+[node name="FirstDelayTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
-[connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]
+[connection signal="timeout" from="MelodieTimer" to="." method="_on_melodie_timer_timeout"]
 [connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]
+[connection signal="timeout" from="FirstDelayTimer" to="." method="_on_first_delay_timer_timeout"]

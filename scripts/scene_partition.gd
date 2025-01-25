@@ -1,9 +1,13 @@
 extends Node
 
 @export var melodie_scene: PackedScene
+@export var note_scene : PackedScene
+
 var score
 var high_score
-var lastTimeToSpawn = 0
+var lastLineSpawn = 0
+var repComp = 0
+
 
 func _ready():
 	load_high_score()
@@ -18,6 +22,7 @@ func new_game():
 
 func game_over() -> void:
 	$ScoreTimer.stop()
+	$MelodieTimer.stop()
 	$NoteTimer.stop()
 	if score > high_score:
 		high_score = score
@@ -27,7 +32,8 @@ func game_over() -> void:
 
 
 func _on_start_timer_timeout() -> void:
-	$NoteTimer.start()
+	$MelodieTimer.start()
+	$FirstDelayTimer.start()
 	$ScoreTimer.start()
 
 
@@ -38,26 +44,27 @@ func _on_score_timer_timeout() -> void:
 
 
 func _on_note_timer_timeout() -> void:
-	
-	lastTimeToSpawn += get_process_delta_time()
-	
+	var note = note_scene.instantiate()
 
-	if(lastTimeToSpawn >=0.01): 
-		lastTimeToSpawn = 0
-		var melodie = melodie_scene.instantiate()
-		var nbPointSpawn: int = randi_range(1,4) 
-		
-		var pathPointSpawn : String =  str("NotePath/PointSpawnLocation",nbPointSpawn)
-		var note_spawn_location = get_node(pathPointSpawn)
+	var nbPointSpawn: int = randi_range(1,4) 
+	if(nbPointSpawn == lastLineSpawn && repComp>=2):
+		repComp += 1
+	else :
+		if(repComp==3):
+			while (nbPointSpawn == lastLineSpawn ):
+				nbPointSpawn = randi_range(1,4) 
+			repComp = 0
 
-		var direction = note_spawn_location.rotation + PI / 2
-		var velocity = Vector2(200.0, 0.0).rotated(direction)
+	var pathPointSpawn : String =  str("NotePath/PointSpawnLocation",nbPointSpawn)
+	var spawn_location = get_node(pathPointSpawn)
 	
-		melodie.position = note_spawn_location.position
-
-		melodie.set_velocity(velocity)
+	var direction = spawn_location.rotation + PI / 2
+	var velocity = Vector2(200.0, 0.0).rotated(direction)
 	
-		add_child(melodie)
+	 
+	note.position =  spawn_location.position
+	note.set_velocity(velocity)
+	add_child(note)
 
 # Sauvegarder le meilleur score dans un fichier
 func save_high_score():
@@ -80,3 +87,32 @@ func load_high_score():
 func _process(delta):
 	if Input.is_action_just_pressed("escape"):
 		game_over()
+
+
+func _on_melodie_timer_timeout() -> void:
+	var melodie = melodie_scene.instantiate()
+	
+	var nbPointSpawn: int = randi_range(1,4) 
+	if(nbPointSpawn == lastLineSpawn && repComp>=2):
+		repComp += 1
+	else :
+		if(repComp==3):
+			while (nbPointSpawn == lastLineSpawn ):
+				nbPointSpawn = randi_range(1,4) 
+			repComp = 0
+
+	var pathPointSpawn : String =  str("NotePath/PointSpawnLocation",nbPointSpawn)
+	var spawn_location = get_node(pathPointSpawn)
+	
+	var direction = spawn_location.rotation + PI / 2
+	var velocity = Vector2(200.0, 0.0).rotated(direction)
+	
+		
+	melodie.position = spawn_location.position
+	melodie.set_velocity(velocity)
+	add_child(melodie)
+
+
+func _on_first_delay_timer_timeout() -> void:
+	$NoteTimer.start()
+	$FirstDelayTimer.queue_free()
