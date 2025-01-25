@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmrwvqqd7su0d"]
+
+[ext_resource type="AudioStream" uid="uid://dlvyn2e2cjs7a" path="res://sounds/Cold_Summer.wav" id="1_5ibs1"]
+[ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="2_0tar8"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_5ibs1")
+autoplay = true
+script = ExtResource("2_0tar8")

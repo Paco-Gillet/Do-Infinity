@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ebmeun8cj0uj"]
+[gd_scene load_steps=5 format=3 uid="uid://ebmeun8cj0uj"]
 
 [ext_resource type="Script" path="res://scenes/menu/menuOption.gd" id="1_3dv82"]
 [ext_resource type="PackedScene" uid="uid://bboet6vnjs84r" path="res://scenes/options/hotkey_rebind_button.tscn" id="3_756cf"]
+[ext_resource type="PackedScene" uid="uid://dmrwvqqd7su0d" path="res://scenes/audio_stream_player.tscn" id="3_trxvs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_by4de"]
 
@@ -50,10 +51,12 @@ offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
+current_tab = 0
 
 [node name="Binds" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
+metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Binds"]
 layout_mode = 0
@@ -92,10 +95,14 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
+metadata/_tab_index = 1
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
+metadata/_tab_index = 2
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("3_trxvs")]
 
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

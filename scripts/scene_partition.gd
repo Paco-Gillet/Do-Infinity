@@ -12,6 +12,8 @@ func game_over():
 	
 func new_game():
 	score = 0
+	MenuMusicPlayer.was_stopped = true
+	MenuMusicPlayer.stop()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	

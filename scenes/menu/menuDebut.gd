@@ -1,5 +1,10 @@
 extends Control
 
+func _ready() -> void:
+	if MenuMusicPlayer.was_stopped:
+		MenuMusicPlayer.was_stopped = false
+		MenuMusicPlayer.play()
+
 func _on_button_play_pressed():
 	get_tree().change_scene_to_file("res://scenes/Scene_partition.tscn")
 
