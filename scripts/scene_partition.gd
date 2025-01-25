@@ -60,11 +60,13 @@ func _on_note_timer_timeout() -> void:
 	var pathPointSpawn : String =  str("NotePath/PointSpawnLocation",nbPointSpawn)
 	var spawn_location = get_node(pathPointSpawn)
 	var direction = spawn_location.rotation + PI / 2
-	var velocity = lerp(Vector2(200.0, 0.0).rotated(direction),Vector2(2000.0, 0.0).rotated(direction),0.01)
+	var velocity = lerp(Vector2(300.0, 0.0).rotated(direction),Vector2(5000.0, 0.0).rotated(direction),0.05)
 	
 	note.position =  spawn_location.position
 	note.set_velocity(velocity)
 	add_child(note)
+	if $NoteTimer.wait_time > 0.1:
+		$NoteTimer.wait_time-=0.01
 	$NoteTimer.stop()
 
 func save_high_score():
@@ -112,10 +114,12 @@ func _on_melodie_timer_timeout() -> void:
 	var spawn_location = get_node(pathPointSpawn)
 	
 	var direction = spawn_location.rotation + PI / 2
-	var velocity = lerp(Vector2(200.0, 0.0).rotated(direction),Vector2(2000.0, 0.0).rotated(direction),0.01)
+	var velocity = lerp(Vector2(300.0, 0.0).rotated(direction),Vector2(5000.0, 0.0).rotated(direction),0.05)
 	
 		
 	melodie.position = spawn_location.position
 	melodie.set_velocity(velocity)
 	add_child(melodie)
+	if $NoteTimer.wait_time > 0.2:
+		$MelodieTimer.wait_time-=0.02
 	$NoteTimer.start()
