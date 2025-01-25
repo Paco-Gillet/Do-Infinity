@@ -68,6 +68,11 @@ wait_time = 0.05
 one_shot = true
 
 [node name="MelodieTimer" type="Timer" parent="."]
+process_callback = 0
+
+[node name="NoteTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
 
 [node name="NotePath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_x7d5w")
@@ -126,11 +131,8 @@ offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 
-[node name="NoteTimer" type="Timer" parent="."]
-wait_time = 0.5
-
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MelodieTimer" to="." method="_on_melodie_timer_timeout"]
-[connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]
+[connection signal="hit" from="Player" to="." method="game_over"]
