@@ -45,6 +45,12 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 
+[node name="Score" type="Label" parent="VBoxText"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
 [node name="VBoxButton" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
