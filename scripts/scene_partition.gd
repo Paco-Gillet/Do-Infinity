@@ -42,8 +42,8 @@ func _on_start_timer_timeout() -> void:
 
 
 func _on_score_timer_timeout() -> void:
-	score += 4
-	$Score.text = "Score: " + str(score/10)
+	score += 1
+	$Score.text = "Score: " + str(score)
 	$Score.show()
 
 

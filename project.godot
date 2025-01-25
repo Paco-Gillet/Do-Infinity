@@ -33,6 +33,12 @@ folder_colors={
 "res://sprites/": "purple"
 }
 
+[importer_defaults]
+
+animation_library={
+"animation/fps": 120.0
+}
+
 [input]
 
 haut={

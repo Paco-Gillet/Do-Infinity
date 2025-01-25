@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdv5uc2gvsfcj"]
+[gd_scene load_steps=20 format=3 uid="uid://cdv5uc2gvsfcj"]
 
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
@@ -9,13 +9,13 @@
 [ext_resource type="PackedScene" path="res://scenes/Note_musique.tscn" id="3_72e0i"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 [ext_resource type="AudioStream" uid="uid://caydig6nfjtfj" path="res://sounds/QueSt.wav" id="6_p0cor"]
-[ext_resource type="AudioStream" uid="uid://dialonoxf775i" path="res://sounds/Tunnel.wav" id="9_8gxgh"]
-[ext_resource type="Script" path="res://scripts/game_music.gd" id="9_guhsr"]
-[ext_resource type="AudioStream" uid="uid://cp4dicx65mt85" path="res://sounds/speedcore.wav" id="11_3ba4r"]
 [ext_resource type="Texture2D" uid="uid://dq30t7gmqcvuw" path="res://sprites/asset-melodie-49-V3.png" id="7_leafy"]
 [ext_resource type="Texture2D" uid="uid://crl5nls1j6w0g" path="res://sprites/NoteDeMusiqueDoubleSansPointBlancFrame1.png" id="8_fqd7n"]
+[ext_resource type="AudioStream" uid="uid://dialonoxf775i" path="res://sounds/Tunnel.wav" id="9_8gxgh"]
+[ext_resource type="Script" path="res://scripts/game_music.gd" id="9_guhsr"]
 [ext_resource type="Texture2D" uid="uid://cqq08x6jqxdpt" path="res://sprites/NoteDeMusiqueSansPointBlancFrame1.png" id="9_lqp7s"]
 [ext_resource type="Texture2D" uid="uid://cucraw0h8rbvu" path="res://sprites/NoteDeMusiqueDoubleSansPointBlancFrame2.png" id="10_c6mlk"]
+[ext_resource type="AudioStream" uid="uid://cp4dicx65mt85" path="res://sounds/speedcore.wav" id="11_3ba4r"]
 [ext_resource type="Texture2D" uid="uid://vp683e4b2dg6" path="res://sprites/NoteDeMusiqueSansPointBlancFrame2.png" id="11_disoh"]
 
 [sub_resource type="Curve2D" id="Curve2D_x7d5w"]
@@ -75,7 +75,6 @@ texture = ExtResource("3_pn1sh")
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 position = Vector2(768, 912)
 rotation = -0.223402
-scale = Vector2(1, 1)
 texture = ExtResource("7_leafy")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
@@ -116,6 +115,7 @@ texture = ExtResource("11_disoh")
 position = Vector2(450, 475)
 
 [node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 0.05
