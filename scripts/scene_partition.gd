@@ -7,6 +7,8 @@ var lastTimeToSpawn = 0
 
 func _ready():
 	load_high_score()
+	$HighScore.text = "High score: " + str(high_score/10)
+	$HighScore.show()
 	new_game()
 
 func new_game():
@@ -23,6 +25,7 @@ func game_over() -> void:
 		high_score = score
 		print("Nouveau meilleur score : " + str(high_score / 10))
 		save_high_score()
+	save_last_score()
 	get_tree().change_scene_to_file("res://scenes/menu/menuDebut.tscn")
 
 
@@ -59,11 +62,17 @@ func _on_note_timer_timeout() -> void:
 	
 		add_child(melodie)
 
-# Sauvegarder le meilleur score dans un fichier
 func save_high_score():
 	var save_file = ConfigFile.new()
 	save_file.set_value("scores", "high_score", high_score)
 	var error = save_file.save("user://high_score.save")
+	if error != OK:
+		print("Erreur lors de la sauvegarde du fichier : ", error)
+
+func save_last_score():
+	var save_file = ConfigFile.new()
+	save_file.set_value("scores", "last_score", score)
+	var error = save_file.save("user://last_score.save")
 	if error != OK:
 		print("Erreur lors de la sauvegarde du fichier : ", error)
 
