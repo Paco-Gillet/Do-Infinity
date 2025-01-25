@@ -57,10 +57,7 @@ func _on_note_timer_timeout() -> void:
 
 		melodie.set_velocity(velocity)
 	
-	var velocity = Vector2(200.0, 0.0)
-	melodie.linear_velocity = velocity.rotated(direction)
-	
-	add_child(melodie)
+		add_child(melodie)
 
 # Sauvegarder le meilleur score dans un fichier
 func save_high_score():
