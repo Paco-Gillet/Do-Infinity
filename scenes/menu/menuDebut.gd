@@ -4,7 +4,7 @@ var high_score
 var last_score
 
 func _ready():
-    if MenuMusicPlayer.was_stopped:
+	if MenuMusicPlayer.was_stopped:
 		MenuMusicPlayer.was_stopped = false
 		MenuMusicPlayer.play()
 	load_high_score()

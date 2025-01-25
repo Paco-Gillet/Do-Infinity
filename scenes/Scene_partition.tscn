@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdv5uc2gvsfcj"]
+[gd_scene load_steps=13 format=3 uid="uid://cdv5uc2gvsfcj"]
 
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
 [ext_resource type="Script" path="res://scripts/scene_partition.gd" id="1_eyimo"]
 [ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
-[ext_resource type="PackedScene" uid="uid://bsuey3jfq2ma1" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
+[ext_resource type="PackedScene" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 [ext_resource type="AudioStream" uid="uid://caydig6nfjtfj" path="res://sounds/QueSt.wav" id="6_p0cor"]
 [ext_resource type="AudioStream" uid="uid://dialonoxf775i" path="res://sounds/Tunnel.wav" id="9_8gxgh"]

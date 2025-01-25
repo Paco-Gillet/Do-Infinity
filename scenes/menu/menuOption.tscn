@@ -103,8 +103,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 0
 metadata/_tab_index = 2
 
-[node name="AudioStreamPlayer" parent="." instance=ExtResource("3_trxvs")]
-
 [node name="MarginContainer2" type="MarginContainer" parent="TabContainer/Video"]
 layout_mode = 0
 offset_top = 31.0
@@ -150,6 +148,8 @@ theme_override_font_sizes/font_size = 32
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("3_trxvs")]
 
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer2/ScrollContainer/VBoxContainer/HBoxContainer/FullScreenCheckButton" to="." method="_on_full_screen_check_button_toggled"]

@@ -52,7 +52,7 @@ func _on_note_timer_timeout() -> void:
 		var melodie = melodie_scene.instantiate()
 		var nbPointSpawn: int = randi_range(1,4) 
 		
-		var pathPointSpawn : String =  str("NotePath/PointSpawnLocation",nbPointSpawn)
+		var pathPointSpawn : String = str("NotePath/PointSpawnLocation", nbPointSpawn)
 		var note_spawn_location = get_node(pathPointSpawn)
 
 		var direction = note_spawn_location.rotation + PI / 2
