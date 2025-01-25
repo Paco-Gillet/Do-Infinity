@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdv5uc2gvsfcj"]
+[gd_scene load_steps=10 format=3 uid="uid://cdv5uc2gvsfcj"]
 
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
 [ext_resource type="PackedScene" uid="uid://lge5pq08lyv" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
 [ext_resource type="Texture2D" uid="uid://bam8vr7mb44qx" path="res://sprites/fond_menu.png" id="3_6uhus"]
-[ext_resource type="PackedScene" uid="uid://bieylfjphacgc" path="res://scenes/Note_musique.tscn" id="3_72e0i"]
+[ext_resource type="PackedScene" path="res://scenes/Note_musique.tscn" id="3_72e0i"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 
 [sub_resource type="Curve2D" id="Curve2D_x7d5w"]
@@ -126,9 +126,11 @@ offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 
+[node name="NoteTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MelodieTimer" to="." method="_on_melodie_timer_timeout"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]
-[connection signal="timeout" from="FirstDelayTimer" to="." method="_on_first_delay_timer_timeout"]

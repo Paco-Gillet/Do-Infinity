@@ -36,7 +36,6 @@ func game_over() -> void:
 
 func _on_start_timer_timeout() -> void:
 	$MelodieTimer.start()
-	$FirstDelayTimer.start()
 	$ScoreTimer.start()
 
 
@@ -58,16 +57,15 @@ func _on_note_timer_timeout() -> void:
 				nbPointSpawn = randi_range(1,4) 
 			repComp = 0
 
-		var direction = note_spawn_location.rotation + PI / 2
-		var velocity = lerp(Vector2(200.0, 0.0).rotated(direction),Vector2(2000.0, 0.0).rotated(direction),0.1)
-	
+	var pathPointSpawn : String =  str("NotePath/PointSpawnLocation",nbPointSpawn)
+	var spawn_location = get_node(pathPointSpawn)
 	var direction = spawn_location.rotation + PI / 2
-	var velocity = Vector2(200.0, 0.0).rotated(direction)
+	var velocity = lerp(Vector2(200.0, 0.0).rotated(direction),Vector2(2000.0, 0.0).rotated(direction),0.01)
 	
-	 
 	note.position =  spawn_location.position
 	note.set_velocity(velocity)
 	add_child(note)
+	$NoteTimer.stop()
 
 func save_high_score():
 	var save_file = ConfigFile.new()
@@ -114,14 +112,10 @@ func _on_melodie_timer_timeout() -> void:
 	var spawn_location = get_node(pathPointSpawn)
 	
 	var direction = spawn_location.rotation + PI / 2
-	var velocity = Vector2(200.0, 0.0).rotated(direction)
+	var velocity = lerp(Vector2(200.0, 0.0).rotated(direction),Vector2(2000.0, 0.0).rotated(direction),0.01)
 	
 		
 	melodie.position = spawn_location.position
 	melodie.set_velocity(velocity)
 	add_child(melodie)
-
-
-func _on_first_delay_timer_timeout() -> void:
 	$NoteTimer.start()
-	$FirstDelayTimer.queue_free()
