@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://lge5pq08lyv"]
+[gd_scene load_steps=5 format=3 uid="uid://bsuey3jfq2ma1"]
 
 [ext_resource type="Script" path="res://scripts/melodie.gd" id="1_k8a76"]
-[ext_resource type="Texture2D" uid="uid://dq30t7gmqcvuw" path="res://sprites/asset-melodie-49-V3.png" id="2_yestc"]
+[ext_resource type="Texture2D" path="res://sprites/asset-melodie-49-V3.png" id="2_yestc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8r1ld"]
 animations = [{

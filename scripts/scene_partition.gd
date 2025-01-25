@@ -7,13 +7,13 @@ var lastTimeToSpawn = 0
 
 func _ready():
 	load_high_score()
-	$HighScore.text = "High score: " + str(high_score/10)
+	$HighScore.text = "High score: " + str(high_score)
 	$HighScore.show()
 	new_game()
 
 func new_game():
 	score = 0
-	$Score.text = "Score: " + str(score/10)
+	$Score.text = "Score: " + str(score)
 	$Score.show()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -23,7 +23,7 @@ func game_over() -> void:
 	$NoteTimer.stop()
 	if score > high_score:
 		high_score = score
-		print("Nouveau meilleur score : " + str(high_score / 10))
+		print("Nouveau meilleur score : " + str(high_score))
 		save_high_score()
 	save_last_score()
 	get_tree().change_scene_to_file("res://scenes/menu/menuDebut.tscn")
@@ -36,7 +36,7 @@ func _on_start_timer_timeout() -> void:
 
 func _on_score_timer_timeout() -> void:
 	score += 1
-	$Score.text = "Score: " + str(score/10)
+	$Score.text = "Score: " + str(score)
 	$Score.show()
 
 

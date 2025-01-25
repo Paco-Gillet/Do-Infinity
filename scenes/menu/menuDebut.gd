@@ -5,10 +5,10 @@ var last_score
 
 func _ready():
 	load_high_score()
-	$VBoxText/HighScore.text = "High score: " + str(high_score / 10)
+	$VBoxText/HighScore.text = "High score: " + str(high_score)
 	$VBoxText/HighScore.show()
 	load_last_score()
-	$VBoxText/Score.text = "Last score: " + str(last_score / 10)
+	$VBoxText/Score.text = "Last score: " + str(last_score)
 	$VBoxText/Score.show()
 
 func _on_button_play_pressed():
