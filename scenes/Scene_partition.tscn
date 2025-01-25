@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdv5uc2gvsfcj"]
+[gd_scene load_steps=9 format=3 uid="uid://cdv5uc2gvsfcj"]
 
 [ext_resource type="Texture2D" uid="uid://vc0oogkw5fab" path="res://sprites/BelleCleDeSol.webp" id="1_brfxy"]
 [ext_resource type="Texture2D" uid="uid://ccdjnu3fo2x3b" path="res://sprites/Fond.png" id="1_c4hj6"]
 [ext_resource type="Script" path="res://scripts/scene_partition.gd" id="1_eyimo"]
 [ext_resource type="PackedScene" uid="uid://cx43dhbahlokd" path="res://scenes/Joueur.tscn" id="2_5wjvc"]
-[ext_resource type="PackedScene" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
+[ext_resource type="PackedScene" uid="uid://lge5pq08lyv" path="res://scenes/Melodie.tscn" id="2_nk0mr"]
+[ext_resource type="Texture2D" uid="uid://bam8vr7mb44qx" path="res://sprites/fond_menu.png" id="3_6uhus"]
 [ext_resource type="Texture2D" uid="uid://hlsqux7ol30a" path="res://sprites/BarreNoire.png" id="3_pn1sh"]
 
 [sub_resource type="Curve2D" id="Curve2D_x7d5w"]
@@ -18,8 +19,14 @@ point_count = 2
 script = ExtResource("1_eyimo")
 melodie_scene = ExtResource("2_nk0mr")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 537)
+scale = Vector2(1.77593, 1.0037)
+texture = ExtResource("3_6uhus")
+
 [node name="Fond" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(1, 288)
+scale = Vector2(1, 0.437037)
 texture = ExtResource("1_c4hj6")
 centered = false
 
@@ -80,11 +87,12 @@ rotation = 1.5708
 progress = 256.469
 
 [node name="PointSpawnLocation4" type="PathFollow2D" parent="NotePath"]
-position = Vector2(1920, 680.844)
+position = Vector2(1920, 680.843)
 rotation = 1.5708
 progress = 359.366
 
 [node name="BelleCleDeSol" type="Sprite2D" parent="."]
+top_level = true
 position = Vector2(197, 540)
 scale = Vector2(1.23697, 1.10556)
 texture = ExtResource("1_brfxy")
@@ -95,7 +103,7 @@ scale = Vector2(0.03, 1.4)
 texture = ExtResource("3_pn1sh")
 
 [node name="White space" type="Sprite2D" parent="BelleCleDeSol"]
-position = Vector2(-149.837, -17.4432)
+position = Vector2(-149.028, -17.4432)
 scale = Vector2(0.00981571, 0.366356)
 texture = ExtResource("1_c4hj6")
 

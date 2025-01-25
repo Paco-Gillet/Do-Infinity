@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ebmeun8cj0uj"]
+[gd_scene load_steps=5 format=3 uid="uid://ebmeun8cj0uj"]
 
 [ext_resource type="Script" path="res://scenes/menu/menuOption.gd" id="1_3dv82"]
+[ext_resource type="Texture2D" uid="uid://bam8vr7mb44qx" path="res://sprites/fond_menu.png" id="2_0jtcb"]
 [ext_resource type="PackedScene" uid="uid://bboet6vnjs84r" path="res://scenes/options/hotkey_rebind_button.tscn" id="3_756cf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_by4de"]
@@ -17,6 +18,11 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3dv82")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(957, 537)
+scale = Vector2(1.78148, 1.0037)
+texture = ExtResource("2_0jtcb")
 
 [node name="Quit" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 0)
@@ -50,10 +56,12 @@ offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
+current_tab = 0
 
 [node name="Binds" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
+metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Binds"]
 layout_mode = 0
@@ -92,11 +100,13 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
+metadata/_tab_index = 1
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
+metadata/_tab_index = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="TabContainer/Video"]
 layout_mode = 0
