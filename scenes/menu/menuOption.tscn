@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ebmeun8cj0uj"]
 
 [ext_resource type="Script" path="res://scenes/menu/menuOption.gd" id="1_3dv82"]
+[ext_resource type="Texture2D" uid="uid://bam8vr7mb44qx" path="res://sprites/fond_menu.png" id="2_0jtcb"]
 [ext_resource type="PackedScene" uid="uid://bboet6vnjs84r" path="res://scenes/options/hotkey_rebind_button.tscn" id="3_756cf"]
 [ext_resource type="PackedScene" uid="uid://dmrwvqqd7su0d" path="res://scenes/audio_stream_player.tscn" id="3_trxvs"]
 
@@ -18,6 +19,11 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3dv82")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(957, 537)
+scale = Vector2(1.78148, 1.0037)
+texture = ExtResource("2_0jtcb")
 
 [node name="Quit" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 0)
