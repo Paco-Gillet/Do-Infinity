@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ebmeun8cj0uj"]
+[gd_scene load_steps=6 format=3 uid="uid://ebmeun8cj0uj"]
 
 [ext_resource type="Script" path="res://scenes/menu/menuOption.gd" id="1_3dv82"]
 [ext_resource type="Texture2D" uid="uid://bam8vr7mb44qx" path="res://sprites/fond_menu.png" id="2_0jtcb"]
@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_by4de"]
 
-[node name="menuOption" type="Control"]
+[node name="menuOption" type="Control" node_paths=PackedStringArray("volume_scroll_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3dv82")
+volume_scroll_bar = NodePath("TabContainer/Audio/MarginContainer2/ScrollContainer/VBoxContainer/HBoxContainer/VolumeScrollBar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(957, 537)
@@ -57,9 +58,10 @@ offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Binds" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
 metadata/_tab_index = 0
@@ -98,10 +100,58 @@ theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
 metadata/_tab_index = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 1000.0
+offset_bottom = 597.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Audio/MarginContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 96
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Audio/MarginContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Volume" type="Label" parent="TabContainer/Audio/MarginContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Volume"
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Audio/MarginContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeScrollBar" type="HScrollBar" parent="TabContainer/Audio/MarginContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = -40.0
+max_value = 0.0
+step = 1.0
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/MarginContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 visible = false
@@ -146,7 +196,6 @@ text = "Full Screen"
 layout_mode = 2
 
 [node name="FullScreenCheckButton" type="CheckButton" parent="TabContainer/Video/MarginContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_direction = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
@@ -158,4 +207,5 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_by4de")
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("3_trxvs")]
 
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer2/ScrollContainer/VBoxContainer/HBoxContainer/VolumeScrollBar" to="." method="_on_h_scroll_bar_value_changed"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer2/ScrollContainer/VBoxContainer/HBoxContainer/FullScreenCheckButton" to="." method="_on_full_screen_check_button_toggled"]

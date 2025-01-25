@@ -2,6 +2,7 @@ extends Control
 
 var high_score
 var last_score
+var volume
 
 func _ready():
 	if MenuMusicPlayer.was_stopped:
@@ -13,6 +14,8 @@ func _ready():
 	load_last_score()
 	$VBoxText/Score.text = "Last score: " + str(last_score)
 	$VBoxText/Score.show()
+	load_volume()
+	AudioServer.set_bus_volume_db(0, volume)
 
 func _on_button_play_pressed():
 	get_tree().change_scene_to_file("res://scenes/Scene_partition.tscn")
@@ -44,3 +47,13 @@ func load_last_score():
 		last_score = 0
 	else:
 		last_score = save_file.get_value("scores", "last_score", 0)
+		
+func load_volume():
+	var save_file = ConfigFile.new()
+	var error = save_file.load("user://options.save")
+
+	if error != OK:
+		print("Aucun fichier de sauvegarde trouvé, initialisation du meilleur score.")
+		volume = 0
+	else:
+		volume = save_file.get_value("options", "volume", volume)
