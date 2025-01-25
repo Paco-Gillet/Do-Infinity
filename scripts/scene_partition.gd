@@ -3,6 +3,7 @@ extends Node
 @export var melodie_scene: PackedScene
 var score
 var high_score
+var lastTimeToSpawn = 0
 
 func _ready():
 	load_high_score()
@@ -37,14 +38,24 @@ func _on_score_timer_timeout() -> void:
 
 
 func _on_note_timer_timeout() -> void:
-	var melodie = melodie_scene.instantiate()
 	
-	var note_spawn_location = get_node("NotePath/NoteSpawnLocation")
-	note_spawn_location.progress_ratio = randf()
+	lastTimeToSpawn += get_process_delta_time()
 	
-	var direction = note_spawn_location.rotation + PI / 2
+
+	if(lastTimeToSpawn >=0.01): 
+		lastTimeToSpawn = 0
+		var melodie = melodie_scene.instantiate()
+		var nbPointSpawn: int = randi_range(1,4) 
+		
+		var pathPointSpawn : String =  str("NotePath/PointSpawnLocation",nbPointSpawn)
+		var note_spawn_location = get_node(pathPointSpawn)
+
+		var direction = note_spawn_location.rotation + PI / 2
+		var velocity = Vector2(200.0, 0.0).rotated(direction)
 	
-	melodie.position = note_spawn_location.position
+		melodie.position = note_spawn_location.position
+
+		melodie.set_velocity(velocity)
 	
 	var velocity = Vector2(200.0, 0.0)
 	melodie.linear_velocity = velocity.rotated(direction)

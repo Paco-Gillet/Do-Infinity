@@ -32,4 +32,4 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_e4klt")
 metadata/_edit_group_ = true
 
-[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_player_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
